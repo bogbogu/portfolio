@@ -1,0 +1,122 @@
+/* Define font families globally */
+:root {
+  --font-primary: 'Inter', sans-serif;
+  --font-secondary: 'Georgia', serif; /* optional */
+}
+
+/* Reusable utility classes */
+.font-primary {
+  font-family: var(--font-primary);
+}
+
+.font-secondary {
+  font-family: var(--font-secondary);
+}
+
+/* Weight variations */
+.font-light {
+  font-weight: 300;
+}
+.font-regular {
+  font-weight: 400;
+}
+.font-medium {
+  font-weight: 500;
+}
+.font-bold {
+  font-weight: 700;
+}
+
+/* Sizes */
+.text-sm {
+  font-size: 0.875rem; /* 14px */
+}
+.text-base {
+  font-size: 1rem; /* 16px */
+}
+.text-lg {
+  font-size: 1.125rem; /* 18px */
+}
+.text-xl {
+  font-size: 1.25rem; /* 20px */
+}
+
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: white;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  color: #333;
+  font-family: 'inter';
+  background: #0f172a;
+  line-height: 1.6;
+}
+
+/* Layout */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* sidebar stays top-aligned */
+  gap: 20px; /* space between sidebar and content */
+}
+
+/* Sidebar */
+.sidebar {
+  padding: 20px;
+}
+
+.sidebar h1 {   
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.sidebar nav a {
+  display: block;
+  margin: 0.5rem 0;
+  color: #bbb;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.sidebar nav a:hover {
+  color: #fff;
+}
+
+/* Main content */
+.content {
+  flex: 1; /* take up the remaining space */
+      padding: 20px;
+}
+
+section {
+  margin-bottom: 4rem;
+}
+
+h2 {
+  margin-bottom: 1rem;
+}
+
+/* Responsive (mobile) */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column; /* stack vertically */
+    align-items: center;
+  }
+
+  .sidebar {
+    width: 100%; /* take full width on mobile */
+    margin-bottom: 20px;
+  }
+
+  .content {
+    width: 100%;
+  }
+}
