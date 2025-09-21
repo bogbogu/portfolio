@@ -1,7 +1,12 @@
 /* Define font families globally */
 :root {
-  --font-primary: 'Inter', sans-serif;
-  --font-secondary: 'Georgia', serif; /* optional */
+  --font-primary: "Inter", sans-serif;
+  --font-secondary: "Georgia", serif; /* optional */
+}
+
+::selection {
+  background: #5eead4; /* highlight background color */
+  color: #0f172a; /* text color when highlighted */
 }
 
 /* Reusable utility classes */
@@ -41,21 +46,26 @@
   font-size: 1.25rem; /* 20px */
 }
 
+.tracking-tight {
+  letter-spacing: -0.025em;
+}
 
 /* Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  color: white;
+  color: #e2e8f0;
 }
 
 body {
   font-family: Arial, sans-serif;
   color: #333;
-  font-family: 'inter';
+  font-family: "inter";
   background: #0f172a;
   line-height: 1.6;
+  max-width: 1200px;
+  margin: auto;
 }
 
 /* Layout */
@@ -64,18 +74,33 @@ body {
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
-  align-items: flex-start; /* sidebar stays top-aligned */
-  gap: 20px; /* space between sidebar and content */
+  align-items: flex-start;
+  gap: 1rem;
+  padding-top: 6rem;
 }
 
 /* Sidebar */
 .sidebar {
-  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* push footer to bottom */
 }
 
-.sidebar h1 {   
-  font-size: 2rem;
-  margin-bottom: 1rem;
+.sidebar,
+.content {
+  padding: 1.25rem;
+}
+
+.sidebar h1 {
+  font-size: 3rem;
+  letter-spacing: -0.1rem;
+  padding: 0px;
+}
+
+.sidebar h2 {
+  font-size: 1.25rem;
+  letter-spacing: -0.025em;
+  margin-top: 1rem;
 }
 
 .sidebar nav a {
@@ -90,10 +115,27 @@ body {
   color: #fff;
 }
 
+/*SIDEBAR FOOTER*/
+.sidebar-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding-top: 20rem;
+}
+.sidebar-footer a img {
+  width: 20px;
+  height: 20px;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+.sidebar-footer a:hover img {
+  opacity: 1;
+}
+
 /* Main content */
 .content {
   flex: 1; /* take up the remaining space */
-      padding: 20px;
 }
 
 section {
@@ -104,19 +146,288 @@ h2 {
   margin-bottom: 1rem;
 }
 
+h4,
+p {
+  color: #94a3b8;
+}
+
+a,
+button {
+  text-decoration: none;
+}
+
+a:hover .icon {
+  fill: #5eead4;
+}
+
+a:hover {
+  color: #5eead4;
+}
+
+/*.icon:hover{
+    fill: #5eead4;
+} */
+
+.link {
+  display: inline-flex; /* text + icon inline */
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
+
+.icon {
+  display: inline-block; /* inline element */
+  width: 1rem; /* h-4 → 16px */
+  height: 1rem; /* w-4 → 16px */
+  flex-shrink: 0; /* shrink-0 */
+  margin-left: 0.25rem; /* ml-1 */
+  transform: translateY(1px); /* translate-y-px */
+  transition: transform 0.2s ease; /* transition-transform */
+}
+
+/* Hover/focus movement */
+.link:hover .icon,
+.link:focus-visible .icon {
+  transform: translate(4px, -4px);
+  transition: transform 0.3s ease;
+}
+
+.experience-card:hover .experience-title .icon {
+  transform: translate(4px, -4px);
+  fill: #5eead4;
+}
+
+.experience-title .icon {
+  transition: transform 0.3s ease;
+}
+
+/* WORK EXPERIENCE SECTION */
+/* ...existing code... */
+.experience-card {
+  color: #e6eaf3;
+  border-radius: 0.25rem;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  transition: background 0.3s, box-shadow 0.3s;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+  cursor: pointer;
+}
+
+.experience-date {
+  color: #7a869a;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  width: 8rem;
+  text-align: left;
+  flex-shrink: 0;
+}
+
+.experience-title {
+  color: #e6eaf3;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: color 0.2s;
+}
+
+.experience-description {
+  color: #94a3b8;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  margin-top: 0.1rem;
+}
+
+.experience-tags {
+  display: flex;
+  gap: 0.875rem;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+.tag {
+  background: #2dd4bf1a;
+  color: #5eead4;
+  border-radius: 999px;
+  padding: 0.25em 0.875em;
+  font-size: 0.75rem;
+  font-weight: 500;
+  transition: background 0.2s, color 0.2s;
+}
+
+.experience-card {
+  background: transparent; /* default: no background */
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+.section-link {
+  font-size: 0.875rem;
+  padding: 1rem;
+}
+
+.project-image {
+  width: 150px;
+  object-fit: cover;
+  border-radius: 0.25rem;
+}
+
+/* Card hover/focus */
+.experience-card:hover,
+.experience-card:focus-within {
+  background: #232c3b71;
+  box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.18);
+}
+
+/* Title changes color when card is hovered */
+.experience-card:hover .experience-title,
+.experience-card:focus-within .experience-title {
+  color: #5eead4;
+}
+
+/* Tags style on hover */
+.experience-card:hover .tag,
+.experience-card:focus-within .tag {
+  background: #2d3d5a;
+  color: #5eead4;
+}
+
+.footer-text {
+  color: #7a869a;
+  font-size: 0.875rem;
+  padding: 1rem;
+}
+
+.footer-text span {
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+.contact-info {
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+}
+.contact-info p {
+  margin: 0.25rem 0;
+  display: flex;
+  align-items: center;
+}
+.contact-info i {
+  margin-right: 0.5rem;
+  color: #7a869a; /* tweak to fit your palette */
+}
+.contact-info a {
+  color: inherit; /* inherit sidebar text color */
+  text-decoration: none;
+}
+.contact-info a:hover {
+  color: #5eead4; /* your brand accent */
+}
+
+.social-icons {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-start; /* or left/right depending on your layout */
+}
+
+.social-icons a {
+  font-size: 1.75rem; /* increase size */
+  color: #555; /* default color */
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #0077b5; /* LinkedIn blue for hover */
+}
+
+/*SMALLER SCREENS*/
+.mobile-headings {
+  display: none;
+  color: #e6eaf3;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  width: 8rem;
+  text-align: left;
+  flex-shrink: 0;
+  padding: 20px 0px;
+}
+
+/* MEDIA QUERIES */
 /* Responsive (mobile) */
-@media (max-width: 768px) {
+@media (max-width: 1023px) {
   .container {
     flex-direction: column; /* stack vertically */
     align-items: center;
+    padding: 48px 0px;
   }
 
   .sidebar {
     width: 100%; /* take full width on mobile */
     margin-bottom: 20px;
+    justify-content: flex-start;
+  }
+
+  nav {
+    display: none;
+  }
+
+  .experience-card,
+  .section-link {
+    padding: 0px;
+  }
+  .sidebar-footer {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    padding-top: 0;
+  }
+
+  .sidebar h1 {
+    font-size: 2.25rem;
   }
 
   .content {
     width: 100%;
+  }
+
+  .footer-text {
+    padding: 0;
+  }
+}
+
+@media (max-width: 1023px) {
+  .experience-card {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .experience-date {
+    text-wrap: nowrap;
+  }
+
+  .mobile-headings {
+    display: block; /* show section headings */
+  }
+}
+
+@media (max-width: 1023px) {
+  /* .sidebar {
+    width: 48%;
+  }
+
+  .content {
+    width: 52%;
+  }*/
+}
+
+/* Motion reduce: no transition */
+@media (prefers-reduced-motion: reduce) {
+  .icon {
+    transition: none;
   }
 }
