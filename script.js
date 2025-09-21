@@ -8,3 +8,11 @@ $(document).ready(function() {
     }
   });
 });
+
+const trail = document.querySelector(".cursor-trail");
+
+document.addEventListener("mousemove", (e) => {
+  trail.style.top = `${e.clientY}px`;
+  trail.style.left = `${e.clientX}px`;
+});
+
