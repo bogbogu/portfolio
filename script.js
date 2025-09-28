@@ -9,10 +9,24 @@ $(document).ready(function() {
   });
 });
 
-const trail = document.querySelector(".cursor-trail");
+document.addEventListener("DOMContentLoaded", () => {
+  const trail = document.querySelector(".cursor-trail");
 
-document.addEventListener("mousemove", (e) => {
-  trail.style.top = `${e.clientY}px`;
-  trail.style.left = `${e.clientX}px`;
+  document.addEventListener("mousemove", (e) => {
+    trail.style.top = `${e.clientY}px`;
+    trail.style.left = `${e.clientX}px`;
+  });
+});
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const currentPage = window.location.pathname.split("/").pop().replace(".html", "");
+  const otherProjects = document.querySelectorAll("#other-projects .project-card");
+
+  otherProjects.forEach(card => {
+    if (card.dataset.name === currentPage) {
+      card.remove();
+    }
+  });
 });
 
