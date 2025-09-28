@@ -207,6 +207,16 @@ a:hover {
 
 /* WORK EXPERIENCE SECTION */
 /* ...existing code... */
+.mobile-headings {
+  color: #e6eaf3;
+  border-radius: 0.25rem;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+}
+
 .experience-card {
   color: #e6eaf3;
   border-radius: 0.25rem;
@@ -265,7 +275,7 @@ a:hover {
 }
 
 .experience-card {
-  background: transparent; /* default: no background */
+  background: transparent;
   transition: background 0.3s, box-shadow 0.3s;
 }
 
@@ -404,8 +414,6 @@ a:hover {
   nav {
     display: none;
   }
-
-  .experience-card,
   .section-link {
     padding: 0px;
   }
