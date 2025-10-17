@@ -104,7 +104,7 @@ body {
   margin-top: 1rem;
 }
 
-.sidebar nav{
+.sidebar nav {
   padding: 50px 0px 0px 0px;
 }
 
@@ -376,7 +376,7 @@ a:hover {
   position: fixed;
   top: 0;
   left: 0;
-  width: 500px;   /* doubled size */
+  width: 500px; /* doubled size */
   height: 500px;
   border-radius: 50%;
   pointer-events: none;
@@ -384,15 +384,14 @@ a:hover {
   z-index: 9999;
   background: radial-gradient(
     circle,
-    rgba(94, 234, 212, 0.25) 0%,   /* lighter near cursor */
-    rgba(94, 234, 212, 0.12) 40%,  /* softer mid glow */
-    rgba(15, 23, 42, 0.95) 100%    /* darker outer edges */
+    rgba(94, 234, 212, 0.25) 0%,
+    /* lighter near cursor */ rgba(94, 234, 212, 0.12) 40%,
+    /* softer mid glow */ rgba(15, 23, 42, 0.95) 100% /* darker outer edges */
   );
-  filter: blur(90px);   /* stronger blur for smoother gradient */
-  opacity: 0.6;         /* a bit darker overall */
+  filter: blur(90px); /* stronger blur for smoother gradient */
+  opacity: 0.6; /* a bit darker overall */
   transition: transform 0.15s ease, opacity 0.3s ease;
 }
-
 
 /* ==================== PROJECT PAGE ==================== */
 /* #region Project Page Styles */
@@ -418,7 +417,7 @@ a:hover {
   color: #fff;
 }
 
-.project-hero{
+.project-hero {
   padding: 1.25rem;
 }
 
@@ -428,14 +427,15 @@ a:hover {
   margin: 2rem 0;
 }
 
-.project-overview, .project-details {
+.project-overview,
+.project-details {
   padding: 1.25rem;
   color: #ddd;
 }
 
 .project-details h2 {
   margin-top: 2rem;
-  color: #FFD700;
+  color: #ffd700;
 }
 
 .project-grid {
@@ -473,6 +473,110 @@ a:hover {
   padding: 1.25rem;
 }
 
+/* ===== MOBILE FOOTER ===== */
+.mobile-footer {
+  display: none;
+}
+
+/* Show on mobile & tablets only */
+@media screen and (max-width: 1023px) {
+  .mobile-footer {
+    display: block;
+    color: #ffffff;
+    padding: 2rem 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+  }
+
+  .mobile-footer p {
+    color: #7a869a;
+    font-size: 0.875rem;
+  }
+  .mobile-footer .contact-info p,
+  .mobile-footer .contact-info a {
+    color: #e5e5e5;
+    font-size: 0.875rem;
+    text-decoration: none;
+  }
+
+  .mobile-footer .contact-info i {
+    margin-right: 8px;
+  }
+
+  .mobile-footer .social-icons {
+    margin-top: 1rem;
+    display: flex;
+    gap: 1rem;
+  }
+
+  .mobile-footer .social-icons a {
+    color: #e5e5e5;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+  }
+
+  .mobile-footer .social-icons a:hover {
+    color: #ffd700;
+  }
+
+  .mobile-footer::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 6px;
+    width: 100%;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+  }
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #2dd4bf1a;
+  border: 1px solid #5eead4;
+  color: #5eead4;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 1000;
+
+  /* Initially hidden */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+}
+
+/* Show when scrolled */
+.back-to-top.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Hover effect */
+.back-to-top:hover {
+  background: rgba(94, 234, 212, 0.15);
+  box-shadow: 0 0 10px rgba(94, 234, 212, 0.4);
+  transform: translateY(-3px);
+}
+
+.footer-bottom {
+  margin-top: 3rem;
+}
+}
+
+/* Hide original footer on mobile/tablet */
+@media screen and (max-width: 1023px) {
+  .sidebar-footer,
+  .footer-text {
+    display: none;
+  }
+}
+
 
 /* MEDIA QUERIES */
 /* Responsive (mobile) */
@@ -480,7 +584,7 @@ a:hover {
   .container {
     flex-direction: column; /* stack vertically */
     align-items: center;
-    padding: 48px 0px;
+    padding: 48px 0px 0px 0px;
   }
   .cursor-trail {
     display: block;
@@ -488,7 +592,7 @@ a:hover {
 
   .sidebar {
     width: 100%; /* take full width on mobile */
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
     justify-content: flex-start;
   }
 
@@ -498,13 +602,7 @@ a:hover {
   .section-link {
     padding: 0px;
   }
-  .sidebar-footer {
-    display: flex;
-    gap: 1rem;
-    margin-top: 2rem;
-    padding-top: 0;
-  }
-
+ 
   .sidebar h1 {
     font-size: 2.25rem;
   }
@@ -539,7 +637,6 @@ a:hover {
     transition: none;
   }
 }
-
 
 /* Archive Header */
 .archive-header {
@@ -576,7 +673,7 @@ a:hover {
 
 .project-card:hover {
   transform: translateY(-5px);
-  
+
   background: #232c3b71;
   box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.18);
 }
