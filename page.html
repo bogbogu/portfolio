@@ -1,0 +1,172 @@
+<!--
+Maintenance Page — single-file HTML
+How to use:
+1. Replace the logo src in the <img id="logo"> tag.
+2. Set the target date/time in the `TARGET_DATE` constant in the script below (ISO format).
+3. Drop this file into your web root (e.g., public_html/maintenance.html) or use it as a temporary index.
+-->
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>We'll be back soon — Maintenance</title>
+  <style>
+    :root{
+      --bg1: #0f172a; /* dark navy */
+      --bg2: #0b1220; /* darker */
+      --accent: #C70024; /* brand Brick Red */
+      --muted: #9aa4b2;
+      --card: rgba(255,255,255,0.03);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial}
+    body{
+      background: radial-gradient(1200px 600px at 10% 10%, rgba(199,0,36,0.08), transparent),
+                  radial-gradient(1000px 500px at 90% 90%, rgba(255,106,0,0.04), transparent),
+                  linear-gradient(180deg,var(--bg1),var(--bg2));
+      color:#e6eef8;
+      display:flex;align-items:center;justify-content:center;padding:32px;
+    }
+
+    .container{
+      width:100%;max-width:980px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:18px;padding:36px;box-shadow:0 6px 30px rgba(2,6,23,0.6);backdrop-filter: blur(6px);
+      display:grid;grid-template-columns:1fr 360px;gap:28px;align-items:center;
+    }
+
+    @media (max-width:880px){
+      .container{grid-template-columns:1fr; padding:28px}
+      .sidebar{order:2}
+    }
+
+    .left{padding-right:12px}
+    #logo{height:56px;display:block}
+    h1{font-size:28px;margin:18px 0 6px}
+    p.lead{color:var(--muted);margin:0 0 18px;line-height:1.5}
+
+    .countdown{
+      display:flex;gap:12px;flex-wrap:wrap;
+    }
+    .time-box{background:var(--card);padding:14px 18px;border-radius:10px;min-width:84px;text-align:center}
+    .time-box .num{font-size:20px;font-weight:700}
+    .time-box .label{font-size:12px;color:var(--muted);margin-top:6px}
+
+    .actions{margin-top:18px;display:flex;gap:12px;flex-wrap:wrap}
+    .btn{background:transparent;border:1px solid rgba(255,255,255,0.08);padding:10px 14px;border-radius:10px;color:inherit;text-decoration:none;font-weight:600}
+    .btn.primary{background:linear-gradient(90deg,var(--accent), #FF6A00);border:none;color:white;box-shadow:0 6px 24px rgba(199,0,36,0.12);}
+
+    .muted-small{color:var(--muted);font-size:13px;margin-top:10px}
+
+    .sidebar{background:rgba(255,255,255,0.02);padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.02)}
+    .logo-wrap{display:flex;align-items:center;gap:12px}
+    .socials{display:flex;gap:10px;margin-top:12px}
+    .socials a{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);text-decoration:none;color:inherit;background:transparent}
+
+    footer.small{font-size:12px;color:var(--muted);margin-top:14px}
+
+    /* subtle pulse animation */
+    .pulse{animation:pulse 2.6s infinite}
+    @keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.02)}100%{transform:scale(1)}}
+
+  </style>
+</head>
+<body>
+  <main class="container pulse" role="main">
+    <section class="left">
+      <div class="logo-wrap">
+        <!-- Replace the src with your logo file. Prefer svg or png with transparent background -->
+        <img id="logo" src="/path/to/your-logo.svg" alt="Your Logo">
+      </div>
+
+      <h1>We’re performing scheduled maintenance</h1>
+      <p class="lead">Sorry for the inconvenience — we’re working to make things better. The site will be back online once our maintenance is complete. Meanwhile, follow us on social media for updates.</p>
+
+      <div role="timer" aria-label="Countdown timer" class="countdown" id="countdown">
+        <div class="time-box"><div class="num" id="days">0</div><div class="label">Days</div></div>
+        <div class="time-box"><div class="num" id="hours">0</div><div class="label">Hours</div></div>
+        <div class="time-box"><div class="num" id="minutes">0</div><div class="label">Minutes</div></div>
+        <div class="time-box"><div class="num" id="seconds">0</div><div class="label">Seconds</div></div>
+      </div>
+
+      <div class="actions">
+        <a class="btn primary" href="#" id="notifyBtn">Notify me when back</a>
+        <a class="btn" href="/contact">Contact support</a>
+      </div>
+
+      <p class="muted-small">Need urgent help? Email <a href="mailto:support@yourdomain.com">support@yourdomain.com</a></p>
+
+    </section>
+
+    <aside class="sidebar">
+      <h3 style="margin:0 0 8px">Follow us for updates</h3>
+      <p class="muted-small">We’ll post real-time updates and ETA on our social channels.</p>
+
+      <div class="socials" aria-hidden="false">
+        <a href="https://twitter.com/yourhandle" target="_blank" rel="noopener" title="Twitter" aria-label="Twitter">
+          <!-- Twitter SVG --><svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M22 5.92c-.63.28-1.31.47-2.02.55.73-.44 1.28-1.14 1.54-1.98-.68.4-1.42.68-2.22.84C18.8 4.37 17.76 4 16.63 4c-1.8 0-3.26 1.47-3.26 3.29 0 .26.03.51.08.75-2.71-.14-5.12-1.45-6.73-3.45-.28.48-.44 1.04-.44 1.64 0 1.13.57 2.12 1.43 2.7-.53-.02-1.03-.16-1.47-.4v.04c0 1.58 1.12 2.9 2.6 3.2-.27.07-.55.11-.84.11-.2 0-.4-.02-.6-.06.41 1.26 1.6 2.17 3.01 2.2-1.1.86-2.48 1.37-3.98 1.37-.26 0-.52-.02-.77-.05 1.43.92 3.12 1.45 4.95 1.45 5.93 0 9.18-4.93 9.18-9.18v-.42c.63-.48 1.16-1.08 1.58-1.77-.58.26-1.2.44-1.84.52.66-.4 1.16-1.03 1.4-1.78z" fill="currentColor"/></svg>
+        </a>
+
+        <a href="https://facebook.com/yourpage" target="_blank" rel="noopener" title="Facebook" aria-label="Facebook">
+          <!-- Facebook SVG --><svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22 12.07C22 6.48 17.52 2 11.93 2 6.34 2 1.86 6.48 1.86 12.07c0 4.98 3.66 9.1 8.44 9.86v-6.99H8.24V12.1h3.06V9.73c0-3.03 1.8-4.69 4.55-4.69 1.32 0 2.7.24 2.7.24v2.96h-1.51c-1.49 0-1.95.93-1.95 1.88v2.24h3.33l-.53 3.84h-2.8v6.99c4.78-.76 8.44-4.88 8.44-9.86z" fill="currentColor"/></svg>
+        </a>
+
+        <a href="https://instagram.com/yourhandle" target="_blank" rel="noopener" title="Instagram" aria-label="Instagram">
+          <!-- Instagram SVG --><svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 6.3a4.7 4.7 0 1 0 0 9.4 4.7 4.7 0 0 0 0-9.4zm6.5-.8a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2zM12 9a3 3 0 1 1 0 6 3 3 0 0 1 0-6z" fill="currentColor"/></svg>
+        </a>
+
+        <a href="https://linkedin.com/company/yourcompany" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn">
+          <!-- LinkedIn SVG --><svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20.45 20.45h-3.56v-5.41c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.08 1.4-2.08 2.85v5.51H9.01V9H12v1.56h.04c.42-.8 1.44-1.64 2.96-1.64 3.17 0 3.76 2.08 3.76 4.78v6.75zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.55V9h3.57v11.45z" fill="currentColor"/></svg>
+        </a>
+      </div>
+
+      <footer class="small">We'll post progress updates — follow the channels above. <br><strong>ETA:</strong> <span id="eta">Loading...</span></footer>
+    </aside>
+  </main>
+
+  <script>
+    // === CONFIG ===
+    // Set your maintenance end date here (ISO format). Example: '2025-11-05T10:00:00Z'
+    const TARGET_DATE = new Date('2025-11-05T10:00:00Z');
+
+    // === countdown logic ===
+    const $days = document.getElementById('days');
+    const $hours = document.getElementById('hours');
+    const $minutes = document.getElementById('minutes');
+    const $seconds = document.getElementById('seconds');
+    const $eta = document.getElementById('eta');
+
+    function updateCountdown(){
+      const now = new Date();
+      let diff = TARGET_DATE - now;
+      if(diff <= 0){
+        $days.textContent = '0'; $hours.textContent='0'; $minutes.textContent='0'; $seconds.textContent='0';
+        $eta.textContent = 'Now — site should be back';
+        clearInterval(timerInterval);
+        return;
+      }
+      const s = Math.floor(diff/1000)%60;
+      const m = Math.floor(diff/1000/60)%60;
+      const h = Math.floor(diff/1000/60/60)%24;
+      const d = Math.floor(diff/1000/60/60/24);
+      $days.textContent = String(d);
+      $hours.textContent = String(h).padStart(2,'0');
+      $minutes.textContent = String(m).padStart(2,'0');
+      $seconds.textContent = String(s).padStart(2,'0');
+
+      // human friendly ETA
+      $eta.textContent = TARGET_DATE.toUTCString();
+    }
+
+    const timerInterval = setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    // Notify button behaviour (example — opens mailto). Replace with your signup modal or API.
+    document.getElementById('notifyBtn').addEventListener('click', function(e){
+      e.preventDefault();
+      window.location.href = 'mailto:subscribe@yourdomain.com?subject=Notify me when site is back';
+    });
+  </script>
+</body>
+</html>
