@@ -69,13 +69,32 @@ export function useContactFormService() {
       });
 
       if (!response.ok) {
-        throw new Error("Message request failed");
+        let apiError = "Unable to send right now. Please try again shortly.";
+
+        try {
+          const payload = (await response.json()) as { error?: string };
+          if (payload.error) {
+            apiError = payload.error;
+          }
+        } catch {
+          // Keep the fallback message when the response is not JSON.
+        }
+
+        if (response.status === 404 && window.location.port === "5173") {
+          apiError = "Local Vite dev server does not run /api routes. Use Vercel dev or test on a deployed preview.";
+        }
+
+        throw new Error(apiError);
       }
 
       setStatusMessage("Message sent successfully. I will get back to you soon.");
       setValues(INITIAL_VALUES);
-    } catch {
-      setStatusMessage("Unable to send right now. Please try again shortly.");
+    } catch (error) {
+      setStatusMessage(
+        error instanceof Error
+          ? error.message
+          : "Unable to send right now. Please try again shortly.",
+      );
     } finally {
       setIsSubmitting(false);
     }

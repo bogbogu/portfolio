@@ -59,11 +59,13 @@ export default async function handler(req: Request): Promise<Response> {
     });
 
     if (result.error) {
-      return Response.json({ error: "Email provider error" }, { status: 502 });
+      const providerMessage = result.error.message ?? "Email provider error";
+      return Response.json({ error: providerMessage }, { status: 502 });
     }
 
     return Response.json({ success: true });
-  } catch {
-    return Response.json({ error: "Failed to send email" }, { status: 500 });
+  } catch (error) {
+    const message = error instanceof Error ? error.message : "Failed to send email";
+    return Response.json({ error: message }, { status: 500 });
   }
 }
