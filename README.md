@@ -50,6 +50,20 @@ If you need to re-install it later:
 npm i @vercel/analytics
 ```
 
+## Vercel Speed Insights
+
+Vercel Speed Insights is configured for this project.
+
+- Package installed: `@vercel/speed-insights`
+- React integration used in this Vite app: `@vercel/speed-insights/react`
+- Component added in `src/main.tsx`: `<SpeedInsights />`
+
+If you need to re-install it later:
+
+```bash
+npm i @vercel/speed-insights
+```
+
 ## Resend Email Setup
 
 Contact form delivery is now wired through a Vercel API route at `/api/contact` using Resend.
