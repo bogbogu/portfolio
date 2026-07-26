@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { navigation } from "../../constants/navigation";
 import { profile } from "../../constants/profile";
 import { socialLinks } from "../../constants/socialLinks";
@@ -19,6 +20,72 @@ function getSocialIcon(label: string) {
 }
 
 export function HeaderNav() {
+  const [activeHref, setActiveHref] = useState(navigation[0]?.href ?? "");
+
+  useEffect(() => {
+    let rafId = 0;
+
+    const updateActiveSection = () => {
+      const sections = navigation
+        .map((item) => {
+          const id = item.href.replace("#", "");
+          const element = document.getElementById(id);
+          return element ? { href: item.href, element } : null;
+        })
+        .filter(
+          (section): section is { href: string; element: HTMLElement } =>
+            Boolean(section),
+        );
+
+      if (sections.length === 0) {
+        return;
+      }
+
+      if (window.scrollY < 24) {
+        setActiveHref(sections[0].href);
+        return;
+      }
+
+      const viewportProbe = window.innerHeight * 0.35;
+      let currentHref = sections[sections.length - 1].href;
+
+      for (const section of sections) {
+        const rect = section.element.getBoundingClientRect();
+        if (rect.top <= viewportProbe && rect.bottom > viewportProbe) {
+          currentHref = section.href;
+          break;
+        }
+
+        if (rect.top > viewportProbe) {
+          break;
+        }
+
+        currentHref = section.href;
+      }
+
+      setActiveHref(currentHref);
+    };
+
+    const onScroll = () => {
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(updateActiveSection);
+    };
+
+    updateActiveSection();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", updateActiveSection);
+    window.addEventListener("hashchange", updateActiveSection);
+    window.addEventListener("load", updateActiveSection);
+
+    return () => {
+      cancelAnimationFrame(rafId);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", updateActiveSection);
+      window.removeEventListener("hashchange", updateActiveSection);
+      window.removeEventListener("load", updateActiveSection);
+    };
+  }, []);
+
   return (
     <aside className="site-header">
       <div className="sidebar-intro">
@@ -31,7 +98,14 @@ export function HeaderNav() {
         <ul>
           {navigation.map((item) => (
             <li key={item.href}>
-              <a href={item.href}>{item.label}</a>
+              <a
+                href={item.href}
+                className={activeHref === item.href ? "is-active" : undefined}
+                aria-current={activeHref === item.href ? "true" : undefined}
+                onClick={() => setActiveHref(item.href)}
+              >
+                {item.label}
+              </a>
             </li>
           ))}
         </ul>

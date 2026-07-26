@@ -2,13 +2,31 @@ import type { Experience } from "../types/Experience";
 
 export const experience: Experience[] = [
   {
+    period: "May 2026 - Present",
+    role: "Frontend Developer (Hybrid)",
+    company: "Keystone Bank",
+    companyUrl: "https://www.keystonebankng.com/",
+    summary:
+      "Building and shipping modern frontend experiences for internal and customer-facing banking products with a focus on performance, state management, and maintainable component architecture.",
+    technologies: [
+      "React",
+      "TypeScript",
+      "TanStack Query",
+      "Axios",
+      "Lucide",
+      "React Icons",
+      "Tailwind CSS",
+      "JavaScript",
+    ],
+  },
+  {
     period: "Jun 2025 - Present",
     role: "Frontend Developer (Remote)",
     company: "Commsworth Solutions",
     companyUrl: "https://credipay.io/",
     summary:
       "Build and maintain core UI components across the company web platform using ASP.NET MVC, Razor, jQuery, and Bootstrap while collaborating with backend developers and product managers.",
-    technologies: ["jQuery", "Razor", "C#", "HTML", "Bootstrap"],
+    technologies: ["jQuery", "Razor", "C#", "HTML", "CSS", "Bootstrap"],
   },
   {
     period: "Apr 2024 - May 2025",

@@ -11,7 +11,7 @@ export const skills: SkillCategory[] = [
   },
   {
     category: "Backend",
-    items: ["Node.js", "ASP.NET MVC", "REST APIs", "MSSQL"],
+    items: ["Node.js", "Express.js", "ASP.NET MVC", "REST APIs", "MSSQL", "MongoDB"],
   },
   {
     category: "Tools",

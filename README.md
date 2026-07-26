@@ -35,3 +35,38 @@ npm run dev
 ```bash
 npm run build
 ```
+
+## Vercel Analytics
+
+Vercel Web Analytics is configured for this project.
+
+- Package installed: `@vercel/analytics`
+- React integration used in this Vite app: `@vercel/analytics/react`
+- Component added in `src/main.tsx`: `<Analytics />`
+
+If you need to re-install it later:
+
+```bash
+npm i @vercel/analytics
+```
+
+## Resend Email Setup
+
+Contact form delivery is now wired through a Vercel API route at `/api/contact` using Resend.
+
+1. Add your key in `.env.local`:
+
+```env
+RESEND_API_KEY=your_resend_api_key
+```
+
+2. Optional overrides:
+
+- `CONTACT_FROM_EMAIL` defaults to `Portfolio Contact <onboarding@resend.dev>`
+- `CONTACT_TO_EMAIL` defaults to `ogbogubenedict@gmail.com`
+
+3. Install dependencies (already done in this repo):
+
+```bash
+npm i resend
+```

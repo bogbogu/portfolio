@@ -111,6 +111,10 @@ a {
   color: var(--text);
 }
 
+.site-header nav a.is-active {
+  color: var(--text);
+}
+
 .sidebar-footer {
   display: grid;
   gap: 1.2rem;

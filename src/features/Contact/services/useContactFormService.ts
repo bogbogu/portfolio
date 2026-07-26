@@ -1,6 +1,5 @@
 import { useMemo, useState } from "react";
 import type { ContactFormErrors, ContactFormValues } from "../../../types/ContactForm";
-import { profile } from "../../../constants/profile";
 
 const INITIAL_VALUES: ContactFormValues = {
   name: "",
@@ -60,20 +59,26 @@ export function useContactFormService() {
 
     setIsSubmitting(true);
 
-    const subject = encodeURIComponent(values.subject);
-    const body = encodeURIComponent(
-      `Name: ${values.name}\nEmail: ${values.email}\n\n${values.message}`,
-    );
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+      });
 
-    window.location.href = `mailto:${profile.email}?subject=${subject}&body=${body}`;
+      if (!response.ok) {
+        throw new Error("Message request failed");
+      }
 
-    await new Promise((resolve) => {
-      window.setTimeout(resolve, 350);
-    });
-
-    setStatusMessage("Your message has been prepared in your mail app.");
-    setValues(INITIAL_VALUES);
-    setIsSubmitting(false);
+      setStatusMessage("Message sent successfully. I will get back to you soon.");
+      setValues(INITIAL_VALUES);
+    } catch {
+      setStatusMessage("Unable to send right now. Please try again shortly.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return {
