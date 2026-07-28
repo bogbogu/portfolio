@@ -1,24 +1,24 @@
 import type { Experience } from "../types/Experience";
 
 export const experience: Experience[] = [
-  {
-    period: "May 2026 - Present",
-    role: "Frontend Developer (Hybrid)",
-    company: "Keystone Bank",
-    companyUrl: "https://www.keystonebankng.com/",
-    summary:
-      "Building and shipping modern frontend experiences for internal and customer-facing banking products with a focus on performance, state management, and maintainable component architecture.",
-    technologies: [
-      "React",
-      "TypeScript",
-      "TanStack Query",
-      "Axios",
-      "Lucide",
-      "React Icons",
-      "Tailwind CSS",
-      "JavaScript",
-    ],
-  },
+  // {
+  //   period: "May 2026 - Present",
+  //   role: "Frontend Developer (Hybrid)",
+  //   company: "Keystone Bank",
+  //   companyUrl: "https://www.keystonebankng.com/",
+  //   summary:
+  //     "Building and shipping modern frontend experiences for internal and customer-facing banking products with a focus on performance, state management, and maintainable component architecture.",
+  //   technologies: [
+  //     "React",
+  //     "TypeScript",
+  //     "TanStack Query",
+  //     "Axios",
+  //     "Lucide",
+  //     "React Icons",
+  //     "Tailwind CSS",
+  //     "JavaScript",
+  //   ],
+  // },
   {
     period: "Jun 2025 - Present",
     role: "Frontend Developer (Remote)",

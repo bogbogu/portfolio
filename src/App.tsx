@@ -12,7 +12,7 @@ const Contact = lazy(() => import("./features/Contact/components/Contact"));
 function App() {
   return (
     <AppLayout>
-      <Suspense fallback={<p className="loading-copy">Loading section...</p>}>
+      <Suspense fallback={<p className="loading-copy">Welcome to my portfolio...</p>}>
         <About />
         <Experience />
         <Projects />

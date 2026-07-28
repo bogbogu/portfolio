@@ -1,0 +1,14 @@
+{
+  "redirects": [
+    {
+      "source": "/wordpress",
+      "destination": "https://wp.benedictogbogu.com",
+      "permanent": true
+    },
+    {
+      "source": "/wordpress/:path*",
+      "destination": "https://wp.benedictogbogu.com/:path*",
+      "permanent": true
+    }
+  ]
+}
