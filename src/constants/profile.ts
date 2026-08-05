@@ -11,5 +11,5 @@ export const profile = {
   email: "ogbogubenedict@gmail.com",
   phone: "+2348104460284",
   resumeUrl:
-    "https://drive.google.com/file/d/1dsU5j9TjE8Tc1qimXNQJcxjJh8VGv-IL/view?usp=sharing",
+    "https://drive.google.com/file/d/1bOeKo8m6yk8uJuv4QKUEPzqeIGNsva7x/view?usp=sharing",
 };
