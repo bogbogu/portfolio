@@ -29,6 +29,24 @@ export const experience: Experience[] = [
     technologies: ["jQuery", "Razor", "C#", "HTML", "CSS", "Bootstrap"],
   },
   {
+    period: "Jan 2026 - May 2026",
+    role: "Full-Stack Developer",
+    company: "Distress NG",
+    companyUrl: "https://distress.ng",
+    summary:
+      "Implemented marketplace features across the frontend and backend, including advanced product filtering, product reviews, seller dashboard enhancements, backend APIs, automated deployment workflows, and technical documentation while improving application reliability, security, and maintainability.",
+    technologies: [
+      "Vue 3",
+      "JavaScript",
+      "PHP",
+      "Laravel",
+      "MySQL",
+      "REST API",
+      "GitHub Actions",
+      "Git",
+    ],
+  },
+  {
     period: "Apr 2024 - May 2025",
     role: "Website Developer (Remote)",
     company: "Broad Shoulders Tribe",
